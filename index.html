@@ -1,0 +1,32 @@
+<html>
+<head>
+<title> Motivation App </title>
+<style>
+	*{font-size:50px;font-family:Calibri;}
+	body{background-image:url("im1.jpg");background-size:1200px 600px}
+	h1{color:purple;background-color:black;border:double;border-radius:20px;width:50%}
+	h2{ color:yellow;border:hidden;width:70%;background-color:black;}	
+</style>
+<script>
+	function get()
+	{	event.preventDefault();
+		let msg = document.getElementById("msg");
+		let url ="https://api.quotable.io/quotes/random";
+		fetch(url)
+		.then(res => res.json())
+		.then(data => msg.innerHTML=data[0]["content"]+"  -> "+data[0]["author"])
+		.catch(err => msg.innerHTML="Issue "+err);
+	}	 
+</script>
+</head>
+<body>
+<center>
+	<h1> GET MOTIVATION </h1>
+	<form onsubmit="get()">
+	<input type="submit" value="Click Me" />
+	</form>
+	<h2 id="msg"/>
+
+</center>
+</body>
+</html>
